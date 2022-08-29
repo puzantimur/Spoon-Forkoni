@@ -56,6 +56,7 @@ class FragmentOne : Fragment() {
 
 
             swipeRefresh.setOnRefreshListener {
+                currentRequest?.cancel()
                 executeRequest {
                     swipeRefresh.isRefreshing = false
                 }
