@@ -13,7 +13,7 @@ import com.example.homew3.databinding.RecipesBinding
 class RecipesAdapter(
     private val context: Context,
     private val onRecipeClicked: (Recipe) -> Unit
-): ListAdapter<PaggingRecipes<Recipe>, RecyclerView.ViewHolder>(DiffUtil) {
+) : ListAdapter<PaggingRecipes<Recipe>, RecyclerView.ViewHolder>(DiffUtil) {
 
     override fun getItemViewType(position: Int): Int {
         return when (getItem(position)) {
@@ -34,7 +34,7 @@ class RecipesAdapter(
             }
             TYPE_LOADING -> {
                 LoadingViewHolder(
-                    binding = RecipeLoadingBinding.inflate(layoutInflater, parent,false)
+                    binding = RecipeLoadingBinding.inflate(layoutInflater, parent, false)
                 )
             }
             else -> error("Causes $viewType")
@@ -43,9 +43,9 @@ class RecipesAdapter(
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        when (val item  = getItem(position)) {
+        when (val item = getItem(position)) {
             is PaggingRecipes.Item -> {
-                checkNotNull(holder as RecipesViewHolder) {"Causes incorret VH $item"}
+                checkNotNull(holder as RecipesViewHolder) { "Causes incorrect VH $item" }
                 holder.bind(item.data)
             }
             PaggingRecipes.Loading -> {
@@ -72,7 +72,6 @@ class RecipesAdapter(
             ): Boolean {
                 return oldItem == newItem
             }
-
 
         }
     }

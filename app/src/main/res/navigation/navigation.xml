@@ -13,7 +13,7 @@
         <action
             android:id="@+id/to_second_fragment"
             app:destination="@id/second_fragment"
-            app:enterAnim="@anim/nav_default_pop_enter_anim"/>
+            app:enterAnim="@anim/nav_default_pop_enter_anim" />
 
     </fragment>
 
@@ -23,9 +23,16 @@
         tools:layout="@layout/fragment_two">
 
         <argument
-            android:defaultValue="0"
-            android:name="text"
-            app:argType="integer"/>
+            android:name="id"
+            app:argType="integer" />
+
+        <argument
+            android:name="title"
+            app:argType="string" />
+
+        <argument
+            android:name="image"
+            app:argType="string" />
 
     </fragment>
 

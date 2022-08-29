@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.navArgs
+import coil.load
 import com.example.homew3.databinding.FragmentTwoBinding
 
 class FragmentTwo : Fragment() {
@@ -14,7 +15,6 @@ class FragmentTwo : Fragment() {
     private val binding get() = requireNotNull(_binding)
 
     private val args by navArgs<FragmentTwoArgs>()
-
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -29,9 +29,12 @@ class FragmentTwo : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.textView.text = args.text.toString()
+        with(binding) {
 
-
+            textViewId.text = args.id.toString()
+            textViewTitle.text = args.title
+            thisRecipeView.load(args.image)
+        }
 
     }
 
