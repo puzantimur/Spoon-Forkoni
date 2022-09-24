@@ -1,4 +1,4 @@
-package com.example.homew3
+package com.example.homew3.MVVM.Model
 
 import retrofit2.Call
 import retrofit2.http.GET

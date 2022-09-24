@@ -3,12 +3,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navigation"
-    app:startDestination="@id/first_fragment">
+    app:startDestination="@id/recipe_fragment">
 
     <fragment
-        android:id="@+id/first_fragment"
-        android:name="com.example.homew3.FragmentOne"
-        tools:layout="@layout/fragment_one">
+        android:id="@+id/recipe_fragment"
+        android:name="com.example.homew3.MVVM.View.RecipesFragment"
+        tools:layout="@layout/fragment_recipes">
 
         <action
             android:id="@+id/to_second_fragment"
@@ -19,8 +19,8 @@
 
     <fragment
         android:id="@+id/second_fragment"
-        android:name="com.example.homew3.FragmentTwo"
-        tools:layout="@layout/fragment_two">
+        android:name="com.example.homew3.MVVM.View.MoreInfoFragment"
+        tools:layout="@layout/fragment_more_info">
 
         <argument
             android:name="id"
@@ -33,6 +33,8 @@
         <argument
             android:name="image"
             app:argType="string" />
+
+
 
     </fragment>
 

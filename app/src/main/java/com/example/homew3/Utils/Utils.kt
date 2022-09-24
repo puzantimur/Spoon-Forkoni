@@ -1,15 +1,12 @@
-package com.example.homew3
+package com.example.homew3.Utils
 
+import com.example.homew3.MVVM.Model.RecipesApi
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.create
 
-object SomeData {
+object Utils {
     private const val SPOON_URL = "https://api.spoonacular.com/"
-
-    private val paddinBetweenObjects: Int = 50
-
-    val getData get() = paddinBetweenObjects
 
     val api by lazy {
         val retrofit = Retrofit.Builder()

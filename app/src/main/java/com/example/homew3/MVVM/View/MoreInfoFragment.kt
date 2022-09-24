@@ -1,4 +1,4 @@
-package com.example.homew3
+package com.example.homew3.MVVM.View
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,21 +7,21 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.navArgs
 import coil.load
-import com.example.homew3.databinding.FragmentTwoBinding
+import com.example.homew3.databinding.FragmentMoreInfoBinding
 
-class FragmentTwo : Fragment() {
+class MoreInfoFragment : Fragment() {
 
-    private var _binding: FragmentTwoBinding? = null
+    private var _binding: FragmentMoreInfoBinding? = null
     private val binding get() = requireNotNull(_binding)
 
-    private val args by navArgs<FragmentTwoArgs>()
+    private val args by navArgs<MoreInfoFragmentArgs>()
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        return FragmentTwoBinding.inflate(inflater, container, false)
+        return FragmentMoreInfoBinding.inflate(inflater, container, false)
             .also { _binding = it }
             .root
     }
@@ -30,7 +30,6 @@ class FragmentTwo : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         with(binding) {
-
             textViewId.text = args.id.toString()
             textViewTitle.text = args.title
             thisRecipeView.load(args.image)

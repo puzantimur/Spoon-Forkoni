@@ -1,4 +1,4 @@
-package com.example.homew3
+package com.example.homew3.MVVM.View
 
 import android.graphics.Rect
 import android.os.Bundle
@@ -9,15 +9,17 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
-import com.example.homew3.databinding.FragmentOneBinding
+import com.example.homew3.MVVM.Model.Recipe
+import com.example.homew3.Utils.Utils
+import com.example.homew3.databinding.FragmentRecipesBinding
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.HttpException
 import retrofit2.Response
 
-class FragmentOne : Fragment() {
+class RecipesFragment : Fragment() {
 
-    private var _binding: FragmentOneBinding? = null
+    private var _binding: FragmentRecipesBinding? = null
     private val binding get() = requireNotNull(_binding)
 
     private val adapter by lazy {
@@ -25,10 +27,11 @@ class FragmentOne : Fragment() {
             context = requireContext(),
             onRecipeClicked = {
                 findNavController().navigate(
-                    FragmentOneDirections.toSecondFragment(
+                    RecipesFragmentDirections.toSecondFragment(
                         it.id,
                         it.title,
                         it.image
+
                     )
                 )
             }
@@ -39,12 +42,14 @@ class FragmentOne : Fragment() {
 
     private var currentRequest: Call<List<Recipe>>? = null
 
+    private val paddingBetweenObjects: Int = 50
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        return FragmentOneBinding.inflate(inflater, container, false)
+        return FragmentRecipesBinding.inflate(inflater, container, false)
             .also { _binding = it }
             .root
     }
@@ -54,9 +59,7 @@ class FragmentOne : Fragment() {
 
         with(binding) {
 
-
             swipeRefresh.setOnRefreshListener {
-                currentRequest?.cancel()
                 executeRequest {
                     swipeRefresh.isRefreshing = false
                 }
@@ -71,7 +74,7 @@ class FragmentOne : Fragment() {
                         parent: RecyclerView,
                         state: RecyclerView.State
                     ) {
-                        outRect.bottom = SomeData.getData
+                        outRect.bottom = paddingBetweenObjects
                     }
                 }
             )
@@ -100,11 +103,11 @@ class FragmentOne : Fragment() {
         }
 
         currentRequest?.cancel()
-        currentRequest = SomeData.api
+        currentRequest = Utils.api
             .getRecipes(
                 "26fdb210da4142409671f31104a8ef9f",
-                "egg",
-                60
+                "meat",
+                99
             )
             .apply {
                 enqueue(object : Callback<List<Recipe>> {
@@ -115,10 +118,7 @@ class FragmentOne : Fragment() {
                         if (response.isSuccessful) {
                             val recipes = response.body() ?: return
                             currentRecipes.addAll(recipes)
-                            val items = recipes.map {
-                                PaggingRecipes.Item(it)
-                            } + PaggingRecipes.Loading
-                            adapter.submitList(items)
+                            adapter.submitList(currentRecipes)
                         } else {
                             handleException(HttpException(response))
                         }

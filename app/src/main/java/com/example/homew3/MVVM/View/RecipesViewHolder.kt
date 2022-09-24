@@ -1,7 +1,8 @@
-package com.example.homew3
+package com.example.homew3.MVVM.View
 
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
+import com.example.homew3.MVVM.Model.Recipe
 import com.example.homew3.databinding.RecipesBinding
 
 class RecipesViewHolder(
