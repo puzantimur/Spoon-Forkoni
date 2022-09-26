@@ -7,9 +7,9 @@ import retrofit2.http.Query
 interface RecipesApi {
 
     @GET("recipes/findByIngredients")
-    fun getRecipes(
+    suspend fun getRecipes(
         @Query("apiKey") key: String,
         @Query("ingredients") ingredients: String,
         @Query("number") number: Int
-    ): Call<List<Recipe>>
+    ): List<Recipe>
 }

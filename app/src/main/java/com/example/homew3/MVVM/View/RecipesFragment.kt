@@ -5,17 +5,22 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
+import android.widget.SearchView
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.flowWithLifecycle
+import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.viewmodel.initializer
+import androidx.lifecycle.viewmodel.viewModelFactory
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
-import com.example.homew3.MVVM.Model.Recipe
-import com.example.homew3.Utils.Utils
+import com.example.homew3.MVVM.ViewModel.RecipesViewModel
+import com.example.homew3.MVVM.ViewModel.ServiceLocator
+import com.example.homew3.R
 import com.example.homew3.databinding.FragmentRecipesBinding
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.HttpException
-import retrofit2.Response
+import kotlinx.coroutines.flow.launchIn
+import kotlinx.coroutines.flow.onEach
 
 class RecipesFragment : Fragment() {
 
@@ -31,16 +36,22 @@ class RecipesFragment : Fragment() {
                         it.id,
                         it.title,
                         it.image
-
                     )
                 )
             }
         )
     }
 
-    private val currentRecipes = mutableListOf<Recipe>()
+    private val viewModel: RecipesViewModel by viewModels(
+        factoryProducer = {
+            viewModelFactory {
+                initializer {
+                    RecipesViewModel(ServiceLocator.provideRecipes())
+                }
+            }
+        }
+    )
 
-    private var currentRequest: Call<List<Recipe>>? = null
 
     private val paddingBetweenObjects: Int = 50
 
@@ -59,13 +70,8 @@ class RecipesFragment : Fragment() {
 
         with(binding) {
 
-            swipeRefresh.setOnRefreshListener {
-                executeRequest {
-                    swipeRefresh.isRefreshing = false
-                }
-            }
-
             recyclerView.adapter = adapter
+
             recyclerView.addItemDecoration(
                 object : RecyclerView.ItemDecoration() {
                     override fun getItemOffsets(
@@ -79,60 +85,44 @@ class RecipesFragment : Fragment() {
                 }
             )
 
+            swipeRefresh.setOnRefreshListener {
+                adapter.submitList(emptyList())
+                viewModel.onRefreshedRecipes()
+            }
+
+
+            toolbar.menu
+                .findItem(R.id.action_search)
+                .actionView
+                .let { it as SearchView }
+                .setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+                    override fun onQueryTextSubmit(query: String): Boolean {
+                        return false
+                    }
+
+                    override fun onQueryTextChange(query: String): Boolean {
+                        viewModel.onQueryChanged(query)
+                        return true
+                    }
+
+                })
+
+            viewModel
+                .recipeFlow
+                .flowWithLifecycle(viewLifecycleOwner.lifecycle, Lifecycle.State.STARTED)
+                .onEach { swipeRefresh.isRefreshing = false }
+                .onEach { adapter.submitList(it) }
+                .launchIn(viewLifecycleOwner.lifecycleScope)
+
+
         }
-        executeRequest()
+
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
-        currentRequest?.cancel()
         _binding = null
     }
 
-    private fun handleException(e: Throwable) {
-        Toast.makeText(requireContext(), "Dumb", Toast.LENGTH_SHORT).show()
-    }
 
-    private fun executeRequest(
-        onRequestFinished: () -> Unit = {}
-    ) {
-
-        val finishRequest = {
-            onRequestFinished()
-            currentRequest = null
-        }
-
-        currentRequest?.cancel()
-        currentRequest = Utils.api
-            .getRecipes(
-                "26fdb210da4142409671f31104a8ef9f",
-                "meat",
-                99
-            )
-            .apply {
-                enqueue(object : Callback<List<Recipe>> {
-                    override fun onResponse(
-                        call: Call<List<Recipe>>,
-                        response: Response<List<Recipe>>
-                    ) {
-                        if (response.isSuccessful) {
-                            val recipes = response.body() ?: return
-                            currentRecipes.addAll(recipes)
-                            adapter.submitList(currentRecipes)
-                        } else {
-                            handleException(HttpException(response))
-                        }
-                        finishRequest()
-                    }
-
-                    override fun onFailure(call: Call<List<Recipe>>, t: Throwable) {
-                        if (!call.isCanceled) {
-                            handleException(t)
-                        }
-                        finishRequest()
-                    }
-                })
-            }
-
-    }
 }

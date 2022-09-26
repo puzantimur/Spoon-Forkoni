@@ -1,14 +1,15 @@
-package com.example.homew3.Utils
+package com.example.homew3.MVVM.ViewModel
 
 import com.example.homew3.MVVM.Model.RecipesApi
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.create
 
-object Utils {
+object ServiceLocator {
+
     private const val SPOON_URL = "https://api.spoonacular.com/"
 
-    val api by lazy {
+    private val recipesApi by lazy {
         val retrofit = Retrofit.Builder()
             .baseUrl(SPOON_URL)
             .addConverterFactory(GsonConverterFactory.create())
@@ -16,4 +17,6 @@ object Utils {
 
         retrofit.create<RecipesApi>()
     }
+
+    fun provideRecipes(): RecipesApi = recipesApi
 }

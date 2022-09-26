@@ -28,9 +28,6 @@ class RecipesAdapter(
         holder.bind(getItem(position))
     }
 
-
-
-
     companion object {
 
         private val DiffUtil = object : DiffUtil.ItemCallback<Recipe>() {
@@ -50,5 +47,4 @@ class RecipesAdapter(
 
         }
     }
-
 }
