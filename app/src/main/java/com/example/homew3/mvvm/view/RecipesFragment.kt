@@ -1,4 +1,4 @@
-package com.example.homew3.MVVM.View
+package com.example.homew3.mvvm.view
 
 import android.graphics.Rect
 import android.os.Bundle
@@ -15,10 +15,11 @@ import androidx.lifecycle.viewmodel.initializer
 import androidx.lifecycle.viewmodel.viewModelFactory
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
-import com.example.homew3.MVVM.ViewModel.RecipesViewModel
-import com.example.homew3.MVVM.ViewModel.ServiceLocator
 import com.example.homew3.R
 import com.example.homew3.databinding.FragmentRecipesBinding
+import com.example.homew3.mvvm.model.appDataBase
+import com.example.homew3.mvvm.viewModel.RecipesViewModel
+import com.example.homew3.mvvm.viewModel.ServiceLocator
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 
@@ -32,7 +33,7 @@ class RecipesFragment : Fragment() {
             context = requireContext(),
             onRecipeClicked = {
                 findNavController().navigate(
-                    RecipesFragmentDirections.toSecondFragment(
+                    RecipesFragmentDirections.toMoreInfoFragment(
                         it.id,
                         it.title,
                         it.image
@@ -42,18 +43,19 @@ class RecipesFragment : Fragment() {
         )
     }
 
+    private val recipesDao by lazy {
+        requireContext().appDataBase.recipesDao
+    }
+
     private val viewModel: RecipesViewModel by viewModels(
         factoryProducer = {
             viewModelFactory {
                 initializer {
-                    RecipesViewModel(ServiceLocator.provideRecipes())
+                    RecipesViewModel(ServiceLocator.provideRecipes(), recipesDao)
                 }
             }
         }
     )
-
-
-    private val paddingBetweenObjects: Int = 50
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -80,7 +82,7 @@ class RecipesFragment : Fragment() {
                         parent: RecyclerView,
                         state: RecyclerView.State
                     ) {
-                        outRect.bottom = paddingBetweenObjects
+                        outRect.bottom = 50   //R.dimen.default_padding если делаю так, то только один объект отображется =(
                     }
                 }
             )
@@ -104,8 +106,8 @@ class RecipesFragment : Fragment() {
                         viewModel.onQueryChanged(query)
                         return true
                     }
-
                 })
+
 
             viewModel
                 .recipeFlow
@@ -113,10 +115,7 @@ class RecipesFragment : Fragment() {
                 .onEach { swipeRefresh.isRefreshing = false }
                 .onEach { adapter.submitList(it) }
                 .launchIn(viewLifecycleOwner.lifecycleScope)
-
-
         }
-
     }
 
     override fun onDestroyView() {

@@ -1,12 +1,12 @@
-package com.example.homew3.MVVM.View
+package com.example.homew3.mvvm.view
 
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
-import com.example.homew3.MVVM.Model.Recipe
 import com.example.homew3.databinding.RecipesBinding
+import com.example.homew3.mvvm.model.Recipe
 
 
 class RecipesAdapter(

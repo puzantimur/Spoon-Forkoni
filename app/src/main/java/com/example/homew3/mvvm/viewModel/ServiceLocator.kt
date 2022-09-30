@@ -1,6 +1,6 @@
-package com.example.homew3.MVVM.ViewModel
+package com.example.homew3.mvvm.viewModel
 
-import com.example.homew3.MVVM.Model.RecipesApi
+import com.example.homew3.mvvm.model.RecipesApi
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.create

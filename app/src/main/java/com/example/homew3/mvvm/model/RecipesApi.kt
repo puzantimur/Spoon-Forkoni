@@ -1,6 +1,5 @@
-package com.example.homew3.MVVM.Model
+package com.example.homew3.mvvm.model
 
-import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Query
 

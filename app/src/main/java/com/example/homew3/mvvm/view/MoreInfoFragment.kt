@@ -1,4 +1,4 @@
-package com.example.homew3.MVVM.View
+package com.example.homew3.mvvm.view
 
 import android.os.Bundle
 import android.view.LayoutInflater
