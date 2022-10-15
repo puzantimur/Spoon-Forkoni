@@ -3,4 +3,17 @@
     <string name="text_view_second">text_view_second</string>
     <string name="enter_ingredients">Enter ingredients</string>
     <string name="click">CLICK</string>
+    <string name="step_by_step">Step by step</string>
+    <string name="missed_ingredients">missed ingredients</string>
+    <string name="time_for_preparing">time for preparing</string>
+    <string name="ingredients">Ingredients:</string>
+    <string name="equipment">Equipment:</string>
+    <string name="enter_here">Enter here</string>
+    <string name="welcome_to_recipes_app_enter_ingredients_below">Welcome, to recipes app. Enter ingredients below!</string>
+    <string name="start">start</string>
+    <string name="description">Description:</string>
+    <string name="equipment_tool_bar">Equipment</string>
+    <string name="explain_missed_ingredients">You have entered the ingredients that you have. Here are the ingredients you need more</string>
+    <string name="number_step">Step №</string>
+    <string name="set_alarm">Set alarm</string>
 </resources>

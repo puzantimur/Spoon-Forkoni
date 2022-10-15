@@ -3,39 +3,84 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navigation"
-    app:startDestination="@id/recipe_fragment">
+    app:startDestination="@id/start_fragment">
+
+    <fragment
+        android:id="@+id/start_fragment"
+        android:name="com.example.homew3.cleanArch.presentation.ui.StartFragment"
+        tools:layout="@layout/fragment_start_app">
+
+        <action
+            android:id="@+id/to_recipe_fragment"
+            app:destination="@id/recipe_fragment"
+            app:enterAnim="@anim/nav_default_pop_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim" />
+
+    </fragment>
 
     <fragment
         android:id="@+id/recipe_fragment"
-        android:name="com.example.homew3.mvvm.view.RecipesFragment"
+        android:name="com.example.homew3.cleanArch.presentation.ui.recipes.RecipesFragment"
         tools:layout="@layout/fragment_recipes">
 
         <action
             android:id="@+id/to_more_info_fragment"
             app:destination="@id/more_info_fragment"
-            app:enterAnim="@anim/nav_default_pop_enter_anim" />
+            app:enterAnim="@anim/nav_default_pop_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim" />
+
+        <argument
+            android:name="ingredients_start"
+            app:argType="string" />
 
     </fragment>
 
     <fragment
         android:id="@+id/more_info_fragment"
-        android:name="com.example.homew3.mvvm.view.MoreInfoFragment"
+        android:name="com.example.homew3.cleanArch.presentation.ui.MoreInfoFragment"
         tools:layout="@layout/fragment_more_info">
+
+        <action
+            android:id="@+id/to_missed_ingredients_fragment"
+            app:destination="@id/missed_ingredients_fragment"
+            app:enterAnim="@anim/nav_default_pop_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim" />
+
+        <action
+            android:id="@+id/to_steps_fragment"
+            app:destination="@id/steps_fragment"
+            app:enterAnim="@anim/nav_default_pop_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim" />
+
+        <argument
+            android:name="missedIngredients"
+            app:argType="com.example.homew3.domain.model.MissedIngredients[]" />
 
         <argument
             android:name="id"
             app:argType="integer" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/missed_ingredients_fragment"
+        android:name="com.example.homew3.cleanArch.presentation.ui.missedIngredients.MissedIngredientsFragment"
+        tools:layout="@layout/fragment_missed_ingredients">
 
         <argument
-            android:name="title"
-            app:argType="string" />
+            android:name="missedIngredients"
+            app:argType="com.example.homew3.domain.model.MissedIngredients[]" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/steps_fragment"
+        android:name="com.example.homew3.cleanArch.presentation.ui.stepByStep.StepByStepFragment"
+        tools:layout="@layout/fragment_step_by_step">
+
 
         <argument
-            android:name="image"
-            app:argType="string" />
-
-
-
+            android:name="id"
+            app:argType="integer" />
     </fragment>
 
 </navigation>

@@ -1,6 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <dimen name="default_padding">50dp</dimen>
+    <dimen name="default_padding">16dp</dimen>
+    <dimen name="edit_text_start">150dp</dimen>
+    <dimen name="start_text_dim">24sp</dimen>
+    <dimen name="text_view_start_dim">140dp</dimen>
+    <dimen name="margin_text_start_dim">220dp</dimen>
+    <dimen name="margin_start_equipment_item">16dp</dimen>
+    <dimen name="margin_start_ll_eq_item">48dp</dimen>
+    <dimen name="text_size_tv_eq_item">36sp</dimen>
+    <dimen name="card_view_corner_radius">10dp</dimen>
+    <dimen name="general_padding_recycler_view">16dp</dimen>
+    <dimen name="margin_tv_fragment_mi">16dp</dimen>
+    <dimen name="text_size_tv_mi">20sp</dimen>
+    <dimen name="margin_button_fr_more_info">16dp</dimen>
+    <dimen name="size_alarm_text">36sp</dimen>
+    <dimen name="margin_top_fragment_st_app_tv">80dp</dimen>
+    <dimen name="iv_ingredient_margin_start">16dp</dimen>
+    <dimen name="ll_ingredient_margin_start">48dp</dimen>
+    <dimen name="tv_ingredient_margin">16dp</dimen>
+    <dimen name="text_size_ingredient_tv">36sp</dimen>
+    <dimen name="iv_missed_margin_start">16dp</dimen>
+    <dimen name="ll_missed_margin_start">48dp</dimen>
+    <dimen name="tv_missed_margin">16dp</dimen>
+    <dimen name="tv_missed_text_size">36sp</dimen>
+    <dimen name="tv_recipes_margin">16dp</dimen>
+    <dimen name="tv_recipes_text_size">24sp</dimen>
+    <dimen name="tv_step_margin">8dp</dimen>
+    <dimen name="tv_step_text_size_">32sp</dimen>
+    <dimen name="tv_ingredients_step_text_size">24sp</dimen>
+    <dimen name="rv_step_padding">8dp</dimen>
 
 </resources>

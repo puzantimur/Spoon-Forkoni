@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        style="@style/Widget.MaterialComponents.Toolbar.Primary"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:title="MissedIngredients" />
+
+    <TextView
+        android:id="@+id/text_view_missed_ingredients"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin_tv_fragment_mi"
+        android:fontFamily="sans-serif-medium"
+        android:text="@string/explain_missed_ingredients"
+        android:textSize="@dimen/text_size_tv_mi" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clipToPadding="false"
+        android:padding="@dimen/general_padding_recycler_view"
+        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+        tools:itemCount="8"
+        tools:listitem="@layout/recipes" />
+
+
+</LinearLayout>

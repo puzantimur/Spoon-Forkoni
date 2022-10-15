@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:cardCornerRadius="@dimen/card_view_corner_radius"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/step"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_margin="@dimen/tv_step_margin"
+            android:fontFamily="sans-serif-medium"
+            android:lines="1"
+            android:textSize="@dimen/tv_step_text_size_"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:text="@string/number_step" />
+
+        <TextView
+            android:id="@+id/ingredients"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_margin="@dimen/tv_step_margin"
+            android:fontFamily="sans-serif-medium"
+            android:lines="1"
+            android:text="@string/ingredients"
+            android:textSize="@dimen/tv_ingredients_step_text_size"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/step" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_view_ingredients"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clipToPadding="false"
+            android:padding="@dimen/rv_step_padding"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintTop_toBottomOf="@id/ingredients"
+            tools:itemCount="3"
+            tools:listitem="@layout/ingredient" />
+
+        <TextView
+            android:id="@+id/equipment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_margin="@dimen/tv_step_margin"
+            android:fontFamily="sans-serif-medium"
+            android:lines="1"
+            android:text="@string/equipment"
+            android:textSize="@dimen/tv_ingredients_step_text_size"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/recycler_view_ingredients" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_view_equipment"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clipToPadding="false"
+            android:padding="@dimen/rv_step_padding"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintTop_toBottomOf="@id/equipment"
+            tools:itemCount="3"
+            tools:listitem="@layout/ingredient" />
+
+
+        <TextView
+            android:id="@+id/description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_margin="8dp"
+            android:fontFamily="sans-serif-medium"
+            android:lines="1"
+            android:text="@string/description"
+            android:textSize="24sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/recycler_view_equipment" />
+
+        <TextView
+            android:id="@+id/description_list"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_margin="@dimen/tv_step_margin"
+            android:fontFamily="sans-serif-medium"
+            tools:text="List of description"
+            android:textSize="@dimen/tv_ingredients_step_text_size"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/description" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.cardview.widget.CardView>
