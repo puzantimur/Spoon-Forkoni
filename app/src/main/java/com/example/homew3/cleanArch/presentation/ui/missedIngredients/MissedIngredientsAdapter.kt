@@ -35,7 +35,7 @@ class MissedIngredientsAdapter(
                 oldItem: MissedIngredients,
                 newItem: MissedIngredients
             ): Boolean {
-                return oldItem == newItem
+                return oldItem.image == newItem.image
             }
 
             override fun areContentsTheSame(

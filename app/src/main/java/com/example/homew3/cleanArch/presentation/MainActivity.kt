@@ -12,7 +12,9 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.animation.doOnEnd
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.core.view.WindowCompat
+import androidx.navigation.findNavController
 import com.example.homew3.R
+import com.example.homew3.cleanArch.presentation.ui.StartFragmentDirections
 
 class MainActivity : AppCompatActivity() {
     @RequiresApi(Build.VERSION_CODES.S)
@@ -25,6 +27,6 @@ class MainActivity : AppCompatActivity() {
 
         WindowCompat.setDecorFitsSystemWindows(window,false)
         window.statusBarColor = Color.TRANSPARENT
-        window.navigationBarColor = Color.TRANSPARENT
     }
+
 }

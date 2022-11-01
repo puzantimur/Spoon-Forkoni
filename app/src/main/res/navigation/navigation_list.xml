@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation_list"
+    app:startDestination="@id/fragment_list">
+
+    <fragment
+        android:id="@+id/fragment_list"
+        android:name="com.example.homew3.cleanArch.presentation.ui.shopList.ShopListFragment"
+        tools:layout="@layout/fragment_ingredient_shop_list">
+
+    </fragment>
+
+</navigation>

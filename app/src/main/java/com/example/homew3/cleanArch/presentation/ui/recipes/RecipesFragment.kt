@@ -20,7 +20,7 @@ import com.example.homew3.R
 import com.example.homew3.databinding.FragmentRecipesBinding
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
-import org.koin.android.ext.android.inject
+import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.core.parameter.parametersOf
 
 class RecipesFragment : Fragment() {
@@ -34,8 +34,7 @@ class RecipesFragment : Fragment() {
             onRecipeClicked = {
                 findNavController().navigate(
                     RecipesFragmentDirections.toMoreInfoFragment(
-                        it.missedIngredients,
-                        it.id
+                        it.id,
                     )
                 )
             }
@@ -45,7 +44,7 @@ class RecipesFragment : Fragment() {
     private val args by navArgs<RecipesFragmentArgs>()
 
 
-    private val viewModel by inject<RecipesViewModel> {
+    private val viewModel by viewModel<RecipesViewModel> {
         parametersOf(args.ingredientsStart)
     }
 
@@ -64,12 +63,14 @@ class RecipesFragment : Fragment() {
 
 
         with(binding) {
+            toolbar.setNavigationOnClickListener {
+                findNavController().popBackStack()
+            }
 
             ViewCompat.setOnApplyWindowInsetsListener(recyclerView) { _, insets ->
                 val recyclerViewSystemBarInsets =
                     insets.getInsets(WindowInsetsCompat.Type.systemBars())
                 recyclerView.updatePadding(
-                    bottom = recyclerViewSystemBarInsets.bottom,
                     left = recyclerViewSystemBarInsets.left,
                     right = recyclerViewSystemBarInsets.right
                 )
@@ -82,7 +83,6 @@ class RecipesFragment : Fragment() {
                     top = toolbarSystemBarInsets.top,
                     left = toolbarSystemBarInsets.left,
                     right = toolbarSystemBarInsets.right,
-                    bottom = toolbarSystemBarInsets.bottom
 
                 )
                 insets

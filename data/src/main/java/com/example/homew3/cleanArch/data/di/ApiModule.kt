@@ -19,6 +19,6 @@ internal val apiModule = module {
     }
 }
 
-object ApiUtils {
+internal object ApiUtils {
     const val SPOON_URL = "https://api.spoonacular.com/"
 }

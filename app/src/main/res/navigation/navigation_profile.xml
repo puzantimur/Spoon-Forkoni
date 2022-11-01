@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation_profile"
+    app:startDestination="@id/fragment_registry">
+
+
+    <fragment
+        android:id="@+id/fragment_registry"
+        android:name="com.example.homew3.cleanArch.presentation.ui.profile.registryLogin.RegistryFragment"
+        tools:layout="@layout/fragment_registry">
+
+
+        <action
+            android:id="@+id/to_login_profile"
+            app:destination="@id/fragment_login_profile"
+            app:enterAnim="@anim/nav_default_pop_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim">
+
+        </action>
+
+        <action
+            android:id="@+id/to_profile"
+            app:destination="@id/profile_fragment"
+            app:enterAnim="@anim/nav_default_pop_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim">
+
+        </action>
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/fragment_login_profile"
+        android:name="com.example.homew3.cleanArch.presentation.ui.profile.registryLogin.LoginAfterRegFragment"
+        tools:layout="@layout/fragment_log_after_reg">
+
+        <action
+            android:id="@+id/to_profile"
+            app:destination="@id/profile_fragment"
+            app:enterAnim="@anim/nav_default_pop_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim">
+
+        </action>
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/profile_fragment"
+        android:name="com.example.homew3.cleanArch.presentation.ui.profile.ProfileFragment"
+        tools:layout="@layout/fragment_profile">
+
+        <action
+            android:id="@+id/to_registry"
+            app:destination="@id/fragment_registry"
+            app:enterAnim="@anim/nav_default_pop_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim">
+
+        </action>
+
+    </fragment>
+
+
+
+</navigation>

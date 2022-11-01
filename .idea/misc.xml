@@ -5,24 +5,41 @@
       <map>
         <entry key="..\:/HomeW3/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.1285" />
         <entry key="..\:/HomeW3/app/src/main/res/drawable/background_green.xml" value="0.1285" />
+        <entry key="..\:/HomeW3/app/src/main/res/drawable/ic_baseline_arrow_left_24.xml" value="0.1" />
         <entry key="..\:/HomeW3/app/src/main/res/drawable/ic_launcher_background.xml" value="0.1285" />
         <entry key="..\:/HomeW3/app/src/main/res/drawable/splash_background.xml" value="0.1" />
-        <entry key="..\:/HomeW3/app/src/main/res/layout-land/fragment_start_app.xml" value="0.152" />
+        <entry key="..\:/HomeW3/app/src/main/res/layout-land/fragment_more_info.xml" value="0.2" />
+        <entry key="..\:/HomeW3/app/src/main/res/layout-land/fragment_spoonforkoni.xml" value="0.25" />
+        <entry key="..\:/HomeW3/app/src/main/res/layout-land/fragment_start_app.xml" value="0.22" />
         <entry key="..\:/HomeW3/app/src/main/res/layout-land/fragment_start_app_landscape.xml" value="0.19427083333333334" />
         <entry key="..\:/HomeW3/app/src/main/res/layout/activity_main.xml" value="0.11302083333333333" />
         <entry key="..\:/HomeW3/app/src/main/res/layout/activity_splash_screen.xml" value="0.25416666666666665" />
+        <entry key="..\:/HomeW3/app/src/main/res/layout/dialog_login.xml" value="0.176" />
         <entry key="..\:/HomeW3/app/src/main/res/layout/equipment.xml" value="0.1" />
+        <entry key="..\:/HomeW3/app/src/main/res/layout/extended_ingredients.xml" value="0.2076923076923077" />
         <entry key="..\:/HomeW3/app/src/main/res/layout/ff.xml" value="0.25416666666666665" />
+        <entry key="..\:/HomeW3/app/src/main/res/layout/fragment_content.xml" value="0.2076923076923077" />
         <entry key="..\:/HomeW3/app/src/main/res/layout/fragment_equipment.xml" value="0.18984375" />
+        <entry key="..\:/HomeW3/app/src/main/res/layout/fragment_favorite.xml" value="0.264" />
+        <entry key="..\:/HomeW3/app/src/main/res/layout/fragment_ingredient_shop_list.xml" value="0.25416666666666665" />
+        <entry key="..\:/HomeW3/app/src/main/res/layout/fragment_log_after_reg.xml" value="0.365625" />
+        <entry key="..\:/HomeW3/app/src/main/res/layout/fragment_login.xml" value="0.36666666666666664" />
+        <entry key="..\:/HomeW3/app/src/main/res/layout/fragment_login_after_reg.xml" value="0.152" />
         <entry key="..\:/HomeW3/app/src/main/res/layout/fragment_missed_ingredients.xml" value="0.176" />
         <entry key="..\:/HomeW3/app/src/main/res/layout/fragment_more_info.xml" value="0.1712962962962963" />
         <entry key="..\:/HomeW3/app/src/main/res/layout/fragment_more_more_info.xml" value="0.36666666666666664" />
         <entry key="..\:/HomeW3/app/src/main/res/layout/fragment_one.xml" value="0.264" />
+        <entry key="..\:/HomeW3/app/src/main/res/layout/fragment_profile.xml" value="0.22" />
         <entry key="..\:/HomeW3/app/src/main/res/layout/fragment_recipes.xml" value="0.25" />
+        <entry key="..\:/HomeW3/app/src/main/res/layout/fragment_registry.xml" value="0.25416666666666665" />
+        <entry key="..\:/HomeW3/app/src/main/res/layout/fragment_spoonforkoni.xml" value="0.36666666666666664" />
         <entry key="..\:/HomeW3/app/src/main/res/layout/fragment_start_app.xml" value="0.25416666666666665" />
         <entry key="..\:/HomeW3/app/src/main/res/layout/fragment_step_by_step.xml" value="0.264" />
         <entry key="..\:/HomeW3/app/src/main/res/layout/fragment_time_for_preparing.xml" value="0.253125" />
+        <entry key="..\:/HomeW3/app/src/main/res/layout/fragment_timer.xml" value="0.25" />
         <entry key="..\:/HomeW3/app/src/main/res/layout/fragment_two.xml" value="0.253125" />
+        <entry key="..\:/HomeW3/app/src/main/res/layout/fragmet_recipe_info.xml" value="0.25" />
+        <entry key="..\:/HomeW3/app/src/main/res/layout/info_recipe.xml" value="0.25416666666666665" />
         <entry key="..\:/HomeW3/app/src/main/res/layout/ingredient.xml" value="0.20854700854700856" />
         <entry key="..\:/HomeW3/app/src/main/res/layout/ingredients.xml" value="0.253125" />
         <entry key="..\:/HomeW3/app/src/main/res/layout/ingridients.xml" value="0.253125" />
@@ -30,15 +47,22 @@
         <entry key="..\:/HomeW3/app/src/main/res/layout/missed_ingredients.xml" value="0.20854700854700856" />
         <entry key="..\:/HomeW3/app/src/main/res/layout/recipe_loading.xml" value="0.25416666666666665" />
         <entry key="..\:/HomeW3/app/src/main/res/layout/recipes.xml" value="0.253125" />
+        <entry key="..\:/HomeW3/app/src/main/res/layout/shop_ingredients.xml" value="0.36666666666666664" />
+        <entry key="..\:/HomeW3/app/src/main/res/layout/shop_list_ingredient.xml" value="0.36666666666666664" />
         <entry key="..\:/HomeW3/app/src/main/res/layout/step.xml" value="0.25757575757575757" />
+        <entry key="..\:/HomeW3/app/src/main/res/menu/bottom_navigation.xml" value="0.20854700854700856" />
+        <entry key="..\:/HomeW3/app/src/main/res/menu/menu_like.xml" value="0.36666666666666664" />
+        <entry key="..\:/HomeW3/app/src/main/res/menu/menu_like_shop.xml" value="0.36666666666666664" />
         <entry key="..\:/HomeW3/app/src/main/res/menu/menu_toolbar.xml" value="0.25416666666666665" />
+        <entry key="..\:/HomeW3/app/src/main/res/menu/menu_toolbar_info_recipe.xml" value="0.253125" />
+        <entry key="..\:/HomeW3/app/src/main/res/menu/menu_toolbar_spoon_forkoni.xml" value="0.36666666666666664" />
         <entry key="..\:/HomeW3/app/src/main/res/menu/menu_toolvar.xml" value="0.25416666666666665" />
         <entry key="..\:/HomeW3/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.1" />
         <entry key="..\:/HomeW3/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.1" />
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_7" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">

@@ -1,9 +1,7 @@
 package com.example.homew3.cleanArch.data.di
 
-import android.app.Application
 import androidx.room.Room
 import com.example.homew3.cleanArch.data.db.AppDataBase
-import com.example.homew3.cleanArch.data.db.RecipesDao
 import org.koin.dsl.module
 
 internal val roomModule = module {
@@ -17,4 +15,5 @@ internal val roomModule = module {
     }
 
     single { get<AppDataBase>().recipesDao }
+    single { get<AppDataBase>().userDao }
 }

@@ -1,24 +1,12 @@
 package com.example.homew3.domain.model
 
+import java.io.Serializable
+
 
 data class Recipe(
     val id: Int,
     val title: String,
     val image: String,
-    val missedIngredients: Array<MissedIngredients>
-) {
-    override fun equals(other: Any?): Boolean {
-        if (this === other) return true
-        if (javaClass != other?.javaClass) return false
-
-        other as Recipe
-
-        if (!missedIngredients.contentEquals(other.missedIngredients)) return false
-
-        return true
-    }
-
-    override fun hashCode(): Int {
-        return missedIngredients.contentHashCode()
-    }
-}
+    val missedIngredients: List<MissedIngredients>,
+    val likes: Int
+):Serializable

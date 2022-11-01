@@ -3,14 +3,12 @@ package com.example.homew3.cleanArch.presentation.ui.recipes
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.homew3.domain.model.Recipe
-import com.example.homew3.domain.repository.ApiRecipeRepository
-import com.example.homew3.domain.repository.DBRepository
+import com.example.homew3.domain.repository.RecipeRepository
 import kotlinx.coroutines.channels.BufferOverflow
 import kotlinx.coroutines.flow.*
 
 class RecipesViewModel(
-    private val apiRecipeRepository: ApiRecipeRepository,
-    private val dbRepository: DBRepository,
+    private val recipeRepository: RecipeRepository,
     private val key: String
 ) : ViewModel() {
 
@@ -22,22 +20,22 @@ class RecipesViewModel(
     private val queryFlow = MutableStateFlow("")
 
     val recipeFlow: Flow<List<Recipe>> = queryFlow
-        .debounce(500)
+        .debounce(DEBOUNCE)
         .combine(
             refreshFlow
                 .map {
-                    apiRecipeRepository.getRecipes(key)
+                    recipeRepository.getRecipes(key)
                 }
         ) { query, result ->
-            result.fold(onSuccess = { onSuccess ->
-                dbRepository.deleteAll(dbRepository.getAll())
-                dbRepository.insertAll(onSuccess)
-                onSuccess.filter { it.title.contains(query, ignoreCase = true) }
+            result.fold(onSuccess = { listRecipe ->
+                recipeRepository.deleteAll(recipeRepository.getAll())
+                recipeRepository.insertAll(listRecipe)
+                listRecipe.filter { it.title.contains(query, ignoreCase = true) }
             }, onFailure = {
                 emptyList()
             })
         }
-        .onStart { emit(dbRepository.getAll()) }
+        .onStart { emit(recipeRepository.getAll()) }
         .shareIn(
             viewModelScope,
             SharingStarted.Lazily,
@@ -51,6 +49,10 @@ class RecipesViewModel(
 
     fun onRefreshedRecipes() {
         refreshFlow.tryEmit(Unit)
+    }
+
+    companion object{
+        private const val DEBOUNCE = 500L
     }
 
 }

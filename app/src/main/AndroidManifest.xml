@@ -3,6 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.homew3">
 
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+
     <application
         android:name=".cleanArch.presentation.MyApplication"
         android:allowBackup="true"
@@ -12,16 +14,22 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.AppSplash"
+        android:theme="@style/Theme.HomeW3"
         tools:targetApi="32">
+
         <activity
             android:name=".cleanArch.presentation.MainActivity"
+            android:theme="@style/Theme.AppSplash"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <service android:name=".cleanArch.presentation.ui.timer.TimerService"
+            android:enabled="true"
+            android:exported="false"/>
 
 
     </application>

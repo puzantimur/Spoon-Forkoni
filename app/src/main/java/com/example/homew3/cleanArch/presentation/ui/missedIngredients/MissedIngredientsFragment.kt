@@ -1,18 +1,26 @@
 package com.example.homew3.cleanArch.presentation.ui.missedIngredients
 
-import android.graphics.Rect
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.core.view.isVisible
 import androidx.core.view.updatePadding
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
-import androidx.recyclerview.widget.RecyclerView
 import com.example.homew3.R
+import com.example.homew3.cleanArch.presentation.Lce
+import com.example.homew3.cleanArch.presentation.utils.ViewUtils.addItemDecorationBottom
 import com.example.homew3.databinding.FragmentMissedIngredientsBinding
+import kotlinx.coroutines.flow.launchIn
+import kotlinx.coroutines.flow.onEach
+import org.koin.androidx.viewmodel.ext.android.viewModel
+import org.koin.core.parameter.parametersOf
 
 class MissedIngredientsFragment : Fragment() {
 
@@ -25,6 +33,15 @@ class MissedIngredientsFragment : Fragment() {
         MissedIngredientsAdapter(
             context = requireContext()
         )
+    }
+
+    private val missedIngredientViewModel by viewModel<MissedIngredientViewModel> {
+        parametersOf(args.id.toString())
+    }
+
+    private val outRectBottom by lazy {
+        requireContext().resources.getDimension(R.dimen.default_padding)
+            .toInt()
     }
 
     override fun onCreateView(
@@ -42,21 +59,11 @@ class MissedIngredientsFragment : Fragment() {
 
         with(binding) {
             recyclerView.adapter = adapter
+            toolbar.setNavigationOnClickListener {
+                findNavController().popBackStack()
+            }
 
-            recyclerView.addItemDecoration(
-                object : RecyclerView.ItemDecoration() {
-                    override fun getItemOffsets(
-                        outRect: Rect,
-                        view: View,
-                        parent: RecyclerView,
-                        state: RecyclerView.State
-                    ) {
-                        outRect.bottom =
-                            requireContext().resources.getDimension(R.dimen.default_padding)
-                                .toInt()
-                    }
-                }
-            )
+            recyclerView.addItemDecorationBottom(outRectBottom)
 
             ViewCompat.setOnApplyWindowInsetsListener(recyclerView) { _, insets ->
                 val recyclerViewSystemBarInsets =
@@ -81,8 +88,28 @@ class MissedIngredientsFragment : Fragment() {
                 insets
             }
 
+            missedIngredientViewModel
+                .missedFlow
+                .onEach { lce ->
+                    when(lce){
+                        is Lce.Content -> {
+                            progress.isVisible = false
+                            textViewMissedIngredients.isVisible = true
+                            recyclerView.isVisible = true
+                            adapter.submitList(lce.data)
+                        }
+                        is Lce.Error -> Toast.makeText(
+                            requireContext(),
+                            lce.throwable.message,
+                            Toast.LENGTH_SHORT
+                        )
+                            .show()
+                        Lce.Loading -> progress.isVisible = true
+                    }
 
-            adapter.submitList(args.missedIngredients.toList())
+                }
+                .launchIn(viewLifecycleOwner.lifecycleScope)
+
         }
     }
 

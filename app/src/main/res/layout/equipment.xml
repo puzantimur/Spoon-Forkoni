@@ -2,7 +2,7 @@
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
+    android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     app:cardCornerRadius="@dimen/card_view_corner_radius">
 
@@ -18,12 +18,6 @@
             android:layout_marginStart="@dimen/margin_start_equipment_item"
             tools:src="@tools:sample/avatars" />
 
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_marginStart="@dimen/margin_start_ll_eq_item"
-            android:orientation="vertical">
-
             <TextView
                 android:id="@+id/equipment_name"
                 android:layout_width="match_parent"
@@ -35,7 +29,6 @@
                 tools:text="@tools:sample/first_names" />
 
 
-        </LinearLayout>
 
 
     </LinearLayout>

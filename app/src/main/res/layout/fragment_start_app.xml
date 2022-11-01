@@ -12,9 +12,10 @@
         android:layout_width="@dimen/text_view_start_dim"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
+        android:gravity="center"
         android:layout_marginTop="@dimen/margin_text_start_dim"
         android:fontFamily="@font/architects_daughter"
-        android:text="@string/welcome_to_recipes_app_enter_ingredients_below"
+        android:text="@string/find_recipes"
         android:textSize="@dimen/start_text_dim" />
 
     <com.google.android.material.textfield.TextInputLayout

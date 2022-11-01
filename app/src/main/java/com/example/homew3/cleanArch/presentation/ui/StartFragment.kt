@@ -6,8 +6,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import com.example.homew3.cleanArch.presentation.utils.SharedPreferencesManager
+import com.example.homew3.cleanArch.presentation.utils.ViewUtils.getTextOrSetError
 import com.example.homew3.databinding.FragmentStartAppBinding
-import com.google.android.material.textfield.TextInputLayout
 
 class StartFragment : Fragment() {
 
@@ -43,13 +44,6 @@ class StartFragment : Fragment() {
         _binding = null
     }
 
-    companion object {
-        fun TextInputLayout.getTextOrSetError(): String? {
-            return editText?.text?.toString()
-                ?.ifBlank {
-                    error = "Enter something"
-                    null
-                }
-        }
-    }
 }
+
+
