@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <ImageView
+        android:id="@+id/image_view"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_width="@dimen/spoon_image_width"
+        android:layout_height="@dimen/spoon_image_height"
+        android:layout_margin="@dimen/margin_16_dp"
+        android:background="@drawable/logo" />
+
+    <ImageView
+        android:id="@+id/image_logo"
+        app:layout_constraintTop_toBottomOf="@id/image_view"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_margin="@dimen/margin_16_dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/spoon_image_v_height"
+        android:background="@drawable/kpag655qfidg6hump7zg1" />
+
+    <Button
+        android:id="@+id/button_get_started"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/image_logo"
+        android:layout_margin="@dimen/margin_16_dp"
+        android:fontFamily="@font/architects_daughter"
+        android:text="@string/get_started"
+        android:textSize="@dimen/text_size_ingredient_tv" />
+
+    <LinearLayout
+        android:id="@+id/linear"
+        app:layout_constraintTop_toBottomOf="@id/button_get_started"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:fontFamily="@font/architects_daughter"
+            android:layout_marginEnd="@dimen/margin_text_spoon"
+            android:lines="1"
+            android:text="@string/already_have_an_account"
+            android:textSize="@dimen/text_size_tv_spoon" />
+
+        <TextView
+            android:id="@+id/sign_in"
+            android:clickable="true"
+            android:focusable="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/architects_daughter"
+            android:text="@string/sign_in"
+            android:textColor="@color/teal_700"
+            android:textSize="@dimen/text_size_tv_spoon" />
+
+    </LinearLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

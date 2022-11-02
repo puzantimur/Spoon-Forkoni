@@ -14,3 +14,5 @@ dependencyResolutionManagement {
 }
 rootProject.name = "HomeW3"
 include ':app'
+include ':domain'
+include ':data'
